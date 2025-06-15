@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using yummealAPI.Data;
 using yummealAPI.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,11 @@ builder.Services.AddSingleton(provider => new Supabase.Client(supabaseUrl, supaB
 {
     AutoConnectRealtime = false,
 }));
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
