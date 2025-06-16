@@ -10,20 +10,27 @@ namespace yummealAPI.Models.Entities
     public class UserProfile
     {
         public int Id { get; set; }
+
         [Required]
         [StringLength(50)]
         public string UserId { get; set; } = string.Empty;
+
         [StringLength(50)]
         public string? FirstName { get; set; }
+
         [StringLength(50)]
         public string? LastName { get; set; }
+
         [Range(13, 120)]
         public int Age { get; set; }
         public Gender? Gender { get; set; }
+
         [Range(100, 250)]
         public int Height { get; set; } // Wzrost w cm
+
         [Range(30, 300)]
         public int CurrentWeight { get; set; } // Waga w kg
+
         [Range(30, 300)]
         public int? TargetWeight { get; set; } // Docelowa waga w kg
 
@@ -47,6 +54,6 @@ namespace yummealAPI.Models.Entities
         public DateTime? UpdatedAt { get; set; } // Data ostatniej aktualizacji profilu
 
         // Preferencje użytkownika
-        public UserPreferences? UserPreferences { get; set; } // Preferencje użytkownika
+        public UserPreferences? Preferences { get; set; } // Preferencje użytkownika
     }
 }
